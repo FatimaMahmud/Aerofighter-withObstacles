@@ -24,14 +24,30 @@ padding: 0;
 /*	position: absolute;
 	top: 60px; left: 500px; width: 20px ; height: 20px;
 */
-position: absolute;
+
+	
+	
+	 width: 100%;
+    height: 700px;
 	top: 30px;
-    background-image: url("http://2.bp.blogspot.com/-DEBHrQo36Lg/TxynphO6qXI/AAAAAAAAJHU/t_8JRN1RUhg/s1600/bumblebee.png");
+    background-image: url(bee.png);
 	top: 0; left: 0; right: 0; bottom: 0;
+	background-position:  top;
+	background-repeat: repeat-x;
+    animation: play 2s steps(27) infinite;
+
+}
+
+.wasp{
+	
 	width: 100%;
     height: 700px;
-	background-position:  top;
-    animation: play .8s steps(50) infinite;
+	top: 30px;
+    background-image: url(wasp.png);
+	background-position:  center;
+	background-repeat: repeat-x;
+    animation: play 2s steps(27) infinite;
+
 }
 
 @keyframes play {
@@ -39,7 +55,3 @@ position: absolute;
      to { background-position: -500px; }
 }
 
-@keyframes play1 {
-   from { background-position:    0px; }
-     to { background-position: -500px; }
-}
