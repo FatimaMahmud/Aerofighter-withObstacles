@@ -1,54 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="style.css">
-<script src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript">
-$(document).keydown(function(e){
-    switch (e.which){
-    case 37:    //left arrow key
-        $(".bird").finish().animate({
-            left: "-=50"
-        });
-        break;
-    case 38:    //up arrow key
-        $(".bird").finish().animate({
-            top: "-=50"
-        });
-        break;
-    case 39:    //right arrow key
-        $(".bird").finish().animate({
-            left: "+=50"
-        });
-        break;
-    case 40:    //bottom arrow key
-        $(".bird").finish().animate({
-            top: "+=50"
-        });
-        break;
-    }
-});
-</script>
-</head>
+* {
+margin:0;
+padding: 0;
+}
 
-<body>
+.bird {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+   /* animation: mymove 5s infinite;*/
+}
 
-  <body onload="gameLoop();" onkeydown="" onkeyup="moveSelection(event)" >
-  <div class = "images">
-	<div class = "bee"></div>
-  </div>
-  <div class = "bird" >
-		 <img id="image1" src="http://gallery.yopriceville.com/downloadfullsize/send/1803" style="position: absolute; top: 30px; left: 70px;">
-	</div>
-  </body>
+.images {
+    width: 100%;
+    height: 700px;
+	top: 30px;
+    background-image: url("http://daintryjensen.com/wp-content/uploads/2015/03/clouds-seamless-background-824.jpg");
+	top: 0; left: 0; right: 0; bottom: 0;
+	background-position:  top;
+    animation: play .8s steps(50) infinite;
+}
 
-	
+.bee{
+/*	position: absolute;
+	top: 60px; left: 500px; width: 20px ; height: 20px;
+*/
+position: absolute;
+	top: 30px;
+    background-image: url("http://2.bp.blogspot.com/-DEBHrQo36Lg/TxynphO6qXI/AAAAAAAAJHU/t_8JRN1RUhg/s1600/bumblebee.png");
+	top: 0; left: 0; right: 0; bottom: 0;
+	width: 100%;
+    height: 700px;
+	background-position:  top;
+    animation: play .8s steps(50) infinite;
+}
 
+@keyframes play {
+   from { background-position:    0px; }
+     to { background-position: -500px; }
+}
 
-
-
-</body>
-
-</html>
-
+@keyframes play1 {
+   from { background-position:    0px; }
+     to { background-position: -500px; }
+}
