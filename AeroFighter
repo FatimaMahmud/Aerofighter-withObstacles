@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(document).keydown(function(e){
+    switch (e.which){
+    case 37:    //left arrow key
+        $(".bird").finish().animate({
+            left: "-=50"
+        });
+        break;
+    case 38:    //up arrow key
+        $(".bird").finish().animate({
+            top: "-=50"
+        });
+        break;
+    case 39:    //right arrow key
+        $(".bird").finish().animate({
+            left: "+=50"
+        });
+        break;
+    case 40:    //bottom arrow key
+        $(".bird").finish().animate({
+            top: "+=50"
+        });
+        break;
+    }
+});
+</script>
+</head>
+
+<body>
+
+  <body onload="gameLoop();" onkeydown="" onkeyup="moveSelection(event)" >
+  <div class = "images">
+	<div class = "bee"></div>
+  </div>
+  <div class = "bird" >
+		 <img id="image1" src="http://gallery.yopriceville.com/downloadfullsize/send/1803" style="position: absolute; top: 30px; left: 70px;">
+	</div>
+  </body>
+
+	
+
+
+
+
+</body>
+
+</html>
 
