@@ -5,6 +5,19 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
+function init(){
+
+   bee = document.getElementById('bee');
+	var rect1 = aircraft.getBoundingClientRect();
+
+   space = document.getElementById('wasp');
+   var rect2 = aircraft.getBoundingClientRect();
+
+}
+
+var aircraft = document.getElementById('image1');
+	var rect1 = aircraft.getBoundingClientRect();
+
 $(document).keydown(function(e){
     switch (e.which){
     case 37:    //left arrow key
@@ -37,6 +50,7 @@ $(document).keydown(function(e){
   <body onload="gameLoop();" onkeydown="" onkeyup="moveSelection(event)" >
   <div class = "images">
 	<div class = "bee"></div>
+	<div class = "wasp"></div>
   </div>
   <div class = "bird" >
 		 <img id="image1" src="http://gallery.yopriceville.com/downloadfullsize/send/1803" style="position: absolute; top: 30px; left: 70px;">
