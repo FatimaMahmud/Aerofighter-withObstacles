@@ -1,68 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="style.css">
-<script src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript">
-function init(){
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1">
+    <title>AeroFighter</title>
+    <Link rel="stylesheet" type="text/css" href="style.css" />
 
-   bee = document.getElementById('bee');
-	var rect1 = aircraft.getBoundingClientRect();
+    <script type="text/javascript">
+        var animate = 0,
+			left = 0,
+            left1 = 0,
+            imgObj = null,
+            right = 0,
+            space = null,
+            left2 = 0,
+			score = 0,
+			scorebody = 0;
 
-   space = document.getElementById('wasp');
-   var rect2 = aircraft.getBoundingClientRect();
+        function init() {
 
-}
+            imgObj = document.getElementById('image2');
+            space = document.getElementById('image3');
+			scoreBody = document.getElementById('score');
+            moveLeft();
+        }
 
-var aircraft = document.getElementById('image1');
-	var rect1 = aircraft.getBoundingClientRect();
 
-$(document).keydown(function(e){
-    switch (e.which){
-    case 37:    //left arrow key
-        $(".bird").finish().animate({
-            left: "-=50"
-        });
-        break;
-    case 38:    //up arrow key
-        $(".bird").finish().animate({
-            top: "-=50"
-        });
-        break;
-    case 39:    //right arrow key
-        $(".bird").finish().animate({
-            left: "+=50"
-        });
-        break;
-    case 40:    //bottom arrow key
-        $(".bird").finish().animate({
-            top: "+=50"
-        });
-        break;
-    }
-});
-</script>
+        function moveLeft() {
+            left1 = parseInt(imgObj.style.left, 10);
+            left2 = parseInt(space.style.left, 10);
+            if (20 > left1) {
+                imgObj.style.left = (Math.floor((Math.random() * 400)) + 800) + 'px';
+                left1 = parseInt(imgObj.style.left, 10);
+                imgObj.style.top = (Math.floor((Math.random() * 500)) + 20) + 'px';
+            }
+            if (20 > left2) {
+                space.style.left = (Math.floor((Math.random() * 400)) + 800) + 'px';
+                left2 = parseInt(space.style.left, 10);
+                space.style.top = (Math.floor((Math.random() * 500)) + 20) + 'px';
+            }
+
+            imgObj.style.left = (left1 - 5) + 'px';
+
+            space.style.left = (left2 - 10) + 'px';
+
+            var aircraft = document.getElementById('image1');
+
+            var rect1 = aircraft.getBoundingClientRect();
+            var rect2 = imgObj.getBoundingClientRect();
+            var rect3 = space.getBoundingClientRect();
+
+            var overlap = !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom);
+            if (overlap == true) {
+				score = score + 1;
+				scoreBody.innerHTML = '' + score;
+                imgObj.style.left = (Math.floor((Math.random() * 200)) + 500) + 'px';
+                imgObj.style.top = (Math.floor((Math.random() * 300)) + 15) + 'px';
+
+            }
+
+         // the overlap of the objects
+
+            var overlap2 = !(rect1.right < rect3.left || rect1.left > rect3.right || rect1.bottom < rect3.top || rect1.top > rect3.bottom);
+            if (overlap2 == true) {
+                space.style.left = (Math.floor((Math.random() * 200)) + 500) + 'px';
+                space.style.top = (Math.floor((Math.random() * 300)) + 15) + 'px';
+            }
+
+            animate = setTimeout(function() {
+                moveLeft();
+            }, 20);
+        }
+
+
+        function stop() {
+            clearTimeout(animate);
+        }
+
+        function obstacle() {
+            alert("Obstacle");
+            imgObj.style.left = '1000px';
+            moveLeft();
+        }
+        window.onload = function() {
+            init();
+        };
+
+
+
+
+        function leftArrowPressed() {
+            var element = document.getElementById("image1");
+            var le = parseInt(element.style.left);
+            if (le > 20)
+                element.style.left = parseInt(element.style.left) - 80 + 'px';
+        }
+
+        function rightArrowPressed() {
+            var element = document.getElementById("image1");
+            var le = parseInt(element.style.left);
+            if (le < 900)
+                element.style.left = parseInt(element.style.left) + 80 + 'px';
+        }
+
+        function upArrowPressed() {
+            var element = document.getElementById("image1");
+            var top = parseInt(element.style.top);
+            if (top > 10)
+                element.style.top = parseInt(element.style.top) - 80 + 'px';
+        }
+
+        function downArrowPressed() {
+            var element = document.getElementById("image1");
+            var top = parseInt(element.style.top);
+            if (top < 450)
+                element.style.top = parseInt(element.style.top) + 80 + 'px';
+        }
+
+        function moveSelection(event) {
+            switch (event.keyCode) {
+                case 37:
+                    leftArrowPressed();
+                    break;
+
+                case 39:
+                    rightArrowPressed();
+                    break;
+
+                case 38:
+                    upArrowPressed();
+                    break;
+
+                case 40:
+                    downArrowPressed();
+                    break;
+            }
+        };
+
+        function gameLoop() {
+            // change position based on speed
+            moveSelection();
+            setTimeout("gameLoop()", 10);
+
+        }
+    </script>
 </head>
 
-<body>
+<body onload="gameLoop();" onkeydown="moveSelection(event)" onkeyup="">
+<h1>Score: <span id="score" >0</span></h1>
 
-  <body onload="gameLoop();" onkeydown="" onkeyup="moveSelection(event)" >
-  <div class = "images">
-	<div class = "bee"></div>
-	<div class = "wasp"></div>
-  </div>
-  <div class = "bird" >
-		 <img id="image1" src="http://gallery.yopriceville.com/downloadfullsize/send/1803" style="position: absolute; top: 30px; left: 70px;">
-	</div>
-  </body>
-
-	
+    <div class="screens">
+        <img id="image1" src="aeroplane.png" style="width:200px;height:130px;top:400px;left:150px;position:absolute" />
+        <img id="image2" src="bee.png" style="width:150px;height:70px;top:200px;left:800px;position:relative" />
+        <img id="image3" src="wasp.png" style="width:150px;height:70px;top:100px;left:900px;position:relative" />
+    </div>
+    <div>
 
 
+        <script>
+            function myFunction() {
 
+            }
+        </script>
+
+    </div>
 
 </body>
 
 </html>
-
