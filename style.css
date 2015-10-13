@@ -1,57 +1,69 @@
 * {
-margin:0;
-padding: 0;
+    margin: 0;
+    padding: 0;
+}
+.screens {
+    width: 100%;
+    height: 600px;
+    background-image: url("http://daintryjensen.com/wp-content/uploads/2015/03/clouds-seamless-background-824.jpg");
+    animation: play 2s steps(27) infinite;
+}
+
+h1 {
+	
+	color: red;
+	text-align: center;
+	font-size: 3vw;
+}
+
+h1 span {
+	font-family: Century Gothic;
 }
 
 .bird {
     width: 50%;
     height: 50%;
     position: absolute;
-   /* animation: mymove 5s infinite;*/
 }
-
 .images {
     width: 100%;
     height: 700px;
-	top: 30px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+	
     background-image: url("http://daintryjensen.com/wp-content/uploads/2015/03/clouds-seamless-background-824.jpg");
-	top: 0; left: 0; right: 0; bottom: 0;
-	background-position:  top;
+    background-position: top;
     animation: play .8s steps(50) infinite;
 }
-
-.bee{
-/*	position: absolute;
-	top: 60px; left: 500px; width: 20px ; height: 20px;
-*/
-
-	
-	
-	 width: 100%;
+.bee {
+    width: 100%;
     height: 700px;
-	top: 30px;
+    top: 30px;
     background-image: url(bee.png);
-	top: 0; left: 0; right: 0; bottom: 0;
-	background-position:  top;
-	background-repeat: repeat-x;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-position: top;
+    background-repeat: repeat-x;
     animation: play 2s steps(27) infinite;
-
 }
-
-.wasp{
-	
-	width: 100%;
+.wasp {
+    width: 100%;
     height: 700px;
-	top: 30px;
+    top: 30px;
     background-image: url(wasp.png);
-	background-position:  center;
-	background-repeat: repeat-x;
+    background-position: center;
+    background-repeat: repeat-x;
     animation: play 2s steps(27) infinite;
-
 }
-
 @keyframes play {
-   from { background-position:    0px; }
-     to { background-position: -500px; }
+    from {
+        background-position: 0px;
+    }
+    to {
+        background-position: -500px;
+    }
 }
-
